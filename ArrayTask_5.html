@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+</head>
+<body>
+    <p id="demo"></p>
+    <button type="button" name="mahesh1" id="India" onclick="repeatedcount()" ></button>
+    <button type="button" name="mahesh2" id="India" onclick="sumofelements()" ></button>
+
+    <script>
+
+        
+        function  repeatedcount()
+        {
+            //console.log("function invoked")
+            var  Tasks=[1,9,1,1,2,1,2,3,4,5,6,3,5,5,4,3,3,6]
+            var obj={};
+            for(var j=0;j<Tasks.length;j++)
+            { 
+            var  element1=Tasks[j];
+            //console.log("element1:: " + element1)
+            var count=0;
+            
+            /*function myFunction(value, index, array) {
+                //console.log("the element1 value::" + element1)
+                return  value == this.element1;
+                //return value;
+
+              }
+              var countarray =Tasks.filter(myFunction);
+                var count =countarray.length*/
+         for(var i=0;i<Tasks.length;i++){
+           
+
+        if(Tasks[j]=== Tasks[i]){
+                    count+=1;
+                    obj[i]=count;
+               ///if(i!==j) {
+                
+                //Tasks.splice(i,1);
+                //console.log("the Tasks::" + Tasks[i]  )
+               //}
+                    
+                    
+                            
+            }
+            
+        }
+
+        //console.log("the log value::" + element1 +'::'+ count )
+        //console.log("the OBJECT VALUES  ::" + obj[j] );
+    }
+    //console.log("the OBJECT VALUES  ::" + obj[1] );
+    document.getElementById("demo").innerHTML = Object.values(obj);
+} 
+function getSum(n) {
+  
+    let sum = 0;
+    while (n > 0 || sum > 9) {
+         if(n == 0) {
+            n = sum;
+            sum = 0;
+         }
+         sum = sum + n % 10;
+         n = Math.floor(n / 10);
+    }
+    
+    return sum;
+    
+}
+//function call  
+//
+function sumofelements()
+{
+   
+    var  Tasks=[1,9,2,1,2,3,4,5,6,3,5,5,4,3,3,6]
+    //To get the amount of the array
+    function doamount(total, value, index, array) {
+        return total + value;
+        }
+        let n = Tasks.reduce(doamount);
+        console.log("The total amount  :: " + n );
+                                                                                                                                            //To get no of digits in the amount
+                                                                                                                                                    /* function digitCount ( num ){
+                                                                                                                                                return Math.floor( num.toString()).length;
+                                                                                                                                            }
+                                                                                                                                                    let numcount = digitCount(totalamount);
+
+    for(var i=0; totalamount.toString().length>1; i++){
+    let sum=0;
+    sum =sum+(totalamount%10);
+    totalamount= Math.floor(totalamount / 10);
+    console.log("The total sum:: " +   sum);
+    this.totalamount=sum;
+    
+    }*/
+    console.log("The total amount 123 :: " +getSum(n) );
+    
+    
+
+}
+   
+
+
+    </script>
+</body>
+</html>
