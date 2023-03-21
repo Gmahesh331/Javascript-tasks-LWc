@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+    </head>
+    <body>
+        <div style="text-align: center;">
+            <b><h2 style="color: green;">Array after 5 the element removal</h2></b>
+        <p style="color: rgba(255, 72, 0, 0.952);" id="demo1"> </p> 
+        <b><h2 style="color: green;">Array after  7 the element removal  </h2></b>
+        <p style="color: rgba(255, 72, 0, 0.952);" id="demo2"> </p> 
+        <b><h2 style="color: green;">Array after all the element removal</h2></b>
+        <p style="color: rgba(255, 72, 0, 0.952);" id="demo3"> </p> 
+        <b><h2 style="color: green;">Array after adding  the New  element using splice method </h2></b>
+        <p style="color: rgba(255, 72, 0, 0.952);" id="demo4"> </p> 
+        </div>
+        <script>
+            const task = [
+                                        { name: "Steve", answer: "Yes",id: "1",amount: "100"},     
+                                        { name: "Jessica", answer: "Yes",id: "2",amount: "200"},
+                                        { name: "jessica", answer: "Yes",id: "2",amount: "50"},
+                                        { name: "INFOSIS", answer: "Yes",id: "3",amount: "500"},
+                                        { name: "Elaine", answer: "No",id: "4",amount: "5000"},  
+                                        { name: "infosis", answer: "No",id: "4",amount: "50"},  // remove the element
+                                        { name: "TCS", answer: "No",id: "5",amount: "5"},
+                                        { name: "TATA", answer: "No",id: "6",amount: "50000"}     // remove the element
+                                        ];
+
+                                        let txt = "";
+                //define the function to diplay the elemernts
+                function myFunction(value, index, array) {
+
+                    txt += value.name+ "---" + value.answer + "-----"+ value.id+ "-----"+ value.amount+  "<br>"; 
+                    }
+                    //invoke the function
+                    
+                                      const task_1=  task.splice(5,1);
+                                      task_1.forEach(myFunction);
+                                      document.getElementById("demo1").innerHTML = txt;
+                                      console.log("array after 5 the element removal ::" +txt)
+                                      
+                                      const task_2=  task.splice(task.length-1,1);
+                                      txt = "";
+                                      task_2.forEach(myFunction);
+                                      document.getElementById("demo2").innerHTML = txt;
+                                      console.log("array after  7 the element removal ::" +txt)
+                                      txt = "";
+                                      task.forEach(myFunction);
+                                      document.getElementById("demo3").innerHTML = txt;
+                                      console.log("array after all the element removal ::" +txt)
+const task2 = [                
+        { name: "Steve", answer: "Yes",id: "1",amount: "100"},     
+        { name: "Jessica", answer: "Yes",id: "2",amount: "200"},
+        { name: "jessica", answer: "Yes",id: "2",amount: "50"},
+        { name: "INFOSIS", answer: "Yes",id: "3",amount: "500"},
+        { name: "Elaine", answer: "No",id: "4",amount: "5000"},  
+        { name: "infosis", answer: "No",id: "4",amount: "50"},  // remove the element
+        { name: "TCS", answer: "No",id: "5",amount: "5"},
+        { name: "TATA", answer: "No",id: "6",amount: "50000"}     // remove the element
+        ];
+
+                                    task2.splice(4,0, { name: "Mahesh", answer: "Yes",id: "3",amount: "500"})
+                                      txt = "";
+                                      task2.forEach(myFunction);
+                                      document.getElementById("demo4").innerHTML = txt;
+                                      console.log("array Adding  a the element ::" +txt)
+                                       
+
+                                      
+
+
+        </script>
+    </body>
+</html>

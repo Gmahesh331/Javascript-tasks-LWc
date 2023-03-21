@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+
+</head>
+<body>
+<header>
+
+</header>
+<center>
+
+<div><button type="button"  id="btn1"  onclick="showbtnicon(this.id)" >Click Here1</button>
+<button type="button" id="btn2"  onclick="showbtnicon(this.id)"  >Click Here2</button>
+<button type="button" id="btn3"  onclick="showbtnicon(this.id)"  >Click Her3</button></div>
+
+<div><button type="button" id="btn4"  onclick="showbtnicon(this.id)"  >Click Here4</button>
+<button type="button"    id="btn5" onclick="showbtnicon(this.id)" >Click Here5</button>
+<button type="button"   id="btn6" onclick="showbtnicon(this.id)" >Click Here6</button></div>
+
+<div><button type="button" id="btn7" onclick="showbtnicon(this.id)"  >Click Here7</button>
+<button type="button" id="btn8" onclick="showbtnicon(this.id)" >Click Here8</button>
+<button type="button" id="btn9" onclick="showbtnicon(this.id)"  >Click Here9</button></div>
+<div></div>
+<div></div>
+<div>
+<button type="button" onclick="window.location.reload()">Refresh</button>
+</div>
+
+
+
+</center> 
+<script>
+var noofClicks=0;
+var symbol1=0;
+var symbol2=1;
+
+function showbtnicon(btnID)
+{
+noofClicks+=1;
+console.log('The noofclicks' + noofClicks );
+if(noofClicks==1){
+document.getElementById(btnID).innerHTML='O';
+document.getElementById(btnID).style.backgroundColor='greenyellow';
+document.getElementById(btnID).disabled = true;
+}
+if(noofClicks==2){
+document.getElementById(btnID).innerHTML='X';
+document.getElementById(btnID).style.backgroundColor='brown';
+document.getElementById(btnID).disabled = true;
+}else if((noofClicks%2)==1)
+{
+document.getElementById(btnID).innerHTML='O';
+document.getElementById(btnID).style.backgroundColor='greenyellow';
+document.getElementById(btnID).disabled = true;
+}else if((noofClicks%2)==0)
+{
+document.getElementById(btnID).innerHTML='X';
+document.getElementById(btnID).style.backgroundColor='brown';
+document.getElementById(btnID).disabled = true;
+}
+
+if(noofClicks>=5){
+    //HORIZONTAL ALIGNMENT
+if(document.getElementById('btn1').innerHTML==document.getElementById('btn2').innerHTML && document.getElementById('btn1').innerHTML==document.getElementById('btn3').innerHTML)
+{
+    console.log('Your are Winner')
+    alert('Your are Winner')
+    
+    //VERTICAL ALIGNMENT
+}else if(document.getElementById('btn1').innerHTML==document.getElementById('btn4').innerHTML && document.getElementById('btn1').innerHTML==document.getElementById('btn7').innerHTML){
+    alert('Your are Winner')
+    console.log('Your are Winner')
+    
+    //DIAGONAL ALIGNMENT
+}else if((document.getElementById('btn1').innerHTML==document.getElementById('btn5').innerHTML && document.getElementById('btn1').innerHTML==document.getElementById('btn9').innerHTML)){
+    alert('Your are Winner')
+    console.log('Your are Winner')
+    //HORIZONTAL ALIGNMENT
+}else if (document.getElementById('btn9').innerHTML==document.getElementById('btn8').innerHTML&& document.getElementById('btn9').innerHTML==document.getElementById('btn7').innerHTML){
+    alert('Your are Winner')
+    console.log('Your are Winner')
+    //VERTICAL ALIGNMENT
+}else if(document.getElementById('btn9').innerHTML==document.getElementById('btn6').innerHTML&& document.getElementById('btn9').innerHTML==document.getElementById('btn3').innerHTML){
+    alert('Your are Winner')
+    console.log('Your are Winner')
+        //DIAGONAL ALIGNMENT
+}else if(document.getElementById('btn3').innerHTML==document.getElementById('btn5').innerHTML&& document.getElementById('btn3').innerHTML==document.getElementById('btn7').innerHTML){
+    alert('Your are Winner')
+    console.log('Your are Winner')
+    //VERTICAL ALIGNMENT
+}else if(document.getElementById('btn2').innerHTML==document.getElementById('btn5').innerHTML && document.getElementById('btn2').innerHTML==document.getElementById('btn8').innerHTML){
+    alert('Your are Winner')
+    console.log('Your are Winner')
+    //HORIZONTAL ALIGNMENT
+}else if(document.getElementById('btn4').innerHTML==document.getElementById('btn5').innerHTML&& document.getElementById('btn4').innerHTML==document.getElementById('btn6').innerHTML){
+    console.log('Your are Winner')
+    alert('Your are Winner')
+} else {
+    console.log('no one is won')
+}
+}
+}
+
+
+
+</script>
+</body>
+</html>

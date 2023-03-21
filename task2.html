@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+.button {
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-align:right;
+    text-decoration:solid;
+    display: inline-block;
+    font-size: 15px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    }
+    
+    .button1 {
+    background-color: white; 
+    color: black; 
+    border: 2px solid #4CAF50;
+    border-radius: 12px;
+    padding: 7px;
+    }
+    
+    .button1:hover {
+    background-color: #4CAF50;
+    color: white;
+    }
+</style>
+</head>
+<body>
+<div style="text-align: center;" >
+<h1>EMI calculator</h1>
+<br>
+</div>
+<div style="text-align: center;">
+<label for="amount1">Amount you need</label>
+<input type="number" id="amount1" name="amount1"   min="50000" max="4000000" onkeypress="return onlyNumberKey(event)"  required>
+<label for="years1">for </label>
+<input type="number" id="years1" name="years1" min="1" max="5" onkeypress="return onlyNumberKey(event)" required> years
+<label for="interest1">Interest rate</label>
+<input type="number" id="interest1" name="interest1"  min="10.5" max="20" onkeypress="return onlyNumberKey(event)" required>%
+</div>
+<div style="text-align: center;">
+<label for="amount"></label>
+<label for="Years"></label>
+<label for="Interest"></label>
+<br>
+₹50,000 <input type="range" id="amount" name="amount" min="50000" max="4000000" onchange="doamount()" > ₹40,00,000
+        
+1 Year<input type="range" id="Years" name="Years" min="1" max="5" onchange="doyears()" > 5 years
+
+10.5%  <input type="range" id="Interest" name="Interest" min="10.5" max="20" onchange="dorate()">  20%
+    
+</div>
+<br>
+<div style="text-align:center;" >
+<button class="button button1" type="button" onclick="calculate()" >CALCULATE</button>
+</div>
+<div style="text-align:center;" >
+<h2 id ="result"><b></b></h2>
+</div>
+<script>
+
+
+/*function validate(inputID) {
+    
+    
+    const input = document.getElementById(inputID);
+    console.log(input);
+    const validityState = input.validity;
+    
+    if (validityState.valueMissing) {
+        input.setCustomValidity("You gotta fill this out, yo!");
+    } else if (validityState.rangeUnderflow) {
+        input.setCustomValidity("We need a higher number!");
+    } else if (validityState.rangeOverflow) {
+        input.setCustomValidity("Thats too high!");
+    } else {
+        input.setCustomValidity("");
+    }
+    
+    input.reportValidity();
+    }*/
+    
+function onlyNumberKey(evt) {
+    
+// Only ASCII character in that range allowed
+
+var ASCIICode = (evt.which) ? evt.which : evt.keyCode
+
+if (ASCIICode > 31 && (ASCIICode < 48 || ASCIICode > 57))
+{
+    //alert('pleases enter number');
+    //result();
+    document.getElementById('amount1').style.borderColor= "red";
+    document.getElementById('years1').style.borderColor= "red";
+    document.getElementById('interest1').style.borderColor= "red";
+    alert("please enter number")
+
+    return false;
+}else
+    {
+    document.getElementById('amount1').style.borderColor= "white";
+    document.getElementById('years1').style.borderColor= "white";
+    document.getElementById('interest1').style.borderColor= "white";
+    return true;
+    } 
+
+}
+
+function  calculate()
+{
+
+
+
+var amount,years,interest;
+
+amount=document.getElementById('amount1').value;
+years=document.getElementById('years1').value;
+rate=document.getElementById('interest1').value;
+
+/*const validitystate = amount.validity;
+const validitystateyears = years.validity;
+const validitystaterate = rate.validity;
+    
+if (validityState.valueMissing||validitystateyears.valueMissing||validitystaterate.valueMissing) {
+    amount.setCustomValidity("You gotta fill this out, yo!");
+} else if (validitystateamount.rangeUnderflow||validitystateyears.rangeUnderflow||validitystaterate.rangeUnderflow) {
+    amount.setCustomValidity("We need a higher number!");
+} else if (validitystateamount.rangeOverflow||validitystateyears.rangeOverflow||validitystaterate.rangeOverflow) {
+    amount.setCustomValidity("Thats too high!");
+} else {
+    amount.setCustomValidity("");
+
+    
+
+amount.reportValidity();
+}*/
+
+if(amount>=50000 && amount <=4000000)
+{
+if(rate>=10.5 && rate<= 20)
+{
+    if(years>=1&& years<=5){
+
+        console.log("Amount:" +amount);
+        console.log("rate"+rate);
+        console.log("months"+years);
+        
+        p = amount;
+        q=(rate/12);
+        r = q/100;
+        n= 12*years;
+        a=1+r;
+        b=a**n;
+        c=b-1;
+        e=b/c;
+        
+        let total = (p*r*e).toFixed(0);
+        
+        console.log("p:" +p)
+        console.log("n:" +n )
+        console.log("r :" +r)
+        console.log("q :" +q)
+        console.log("a :" +a)
+        console.log("b :" +b)
+        console.log("c :" +c)
+        console.log("d :" +e)
+        
+        console.log("total"+ total);
+        
+        console.log(parseInt(total));
+        
+        document.getElementById('result')
+            .innerHTML = "Your Monthly EMI will be  ₹"+ total   +" per month";
+    }
+    else{
+        alert("please  years between 1 and 5 ")
+    }
+}
+else 
+{
+    alert("please enter the interest between the 10.5 and 20")
+}
+} 
+else {
+alert("please enter the amount between 50000 and 4000000")
+} 
+    
+
+
+
+
+
+
+
+}
+
+//EMI = parseint()amount * (interest *(1 + interest)*months)/ (((1 + interest)*months) - 1) .toFixed(2)+ this.interest
+
+
+
+function doamount()
+{
+document.getElementById('amount1').value=document.getElementById('amount').value;
+console.log(document.getElementById('amount').value);
+/*document.getElementById('years1').value=document.getElementById('Years').value;
+document.getElementById('interest1').value=document.getElementById('Interest').value;*/
+
+}
+function doyears()
+{
+document.getElementById('years1').value=document.getElementById('Years').value;
+}
+function dorate()
+{
+
+document.getElementById('interest1').value=document.getElementById('Interest').value;
+}
+
+
+</script>
+</body>
+</html>

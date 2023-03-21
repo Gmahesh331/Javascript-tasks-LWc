@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+      .fnumber, .snumber, .buttons1234, .getresultbutton, .resett, .totalresult{
+        text-align: center;
+        color: red;
+      }
+      
+    .button {
+      border: none;
+      color: white;
+      padding: 16px 32px;
+      text-align:right;
+      text-decoration:solid;
+      display: inline-block;
+      font-size: 15px;
+      margin: 4px 2px;
+      transition-duration: 0.4s;
+      cursor: pointer;
+    }
+    
+    .button1 {
+      background-color: white; 
+      color: black; 
+      border: 2px solid #4CAF50;
+      border-radius: 12px;
+      padding: 7px;
+    }
+    
+    .button1:hover {
+      background-color: #4CAF50;
+      color: white;
+    }
+    
+    .button2 {
+      background-color: white; 
+      color: black; 
+      border: 2px solid #008CBA;
+      border-radius: 12px;
+      padding: 7px;
+    }
+    
+    .button2:hover {
+      background-color: #008CBA;
+      color: white;
+    }
+    
+    </style>
+    </head>
+<body>
+<form >
+  <h1 style="color:blue;text-align:center;"><b>Simple Arthmatic operations</b></h1>
+<div class="fnumber">
+<label for="Number1">Number-1</label>
+<input type="number" id="Number1" name="Number1" onkeypress="return onlyNumberKey(event)" required>
+</div>
+<br>
+
+<div class="snumber">
+<label for="Number2">Number-2</label>
+<input type="number" id="Number2" name="Number2" onkeypress="return onlyNumberKey(event)" required>
+</div><br>
+<div class="buttons1234">
+
+<button  class="button button1" type="button"  onclick="addition()"><b>Add</b></button>
+<button class="button button2"  type="button" onclick="subtraction()"><b>Subtract</b></button>
+<button class="button button1" type="button"  onclick=" multiplication()"><b>Multiply</b></button>
+  <button class="button button2" type="button"  onclick="division()"><b>Division</b></button>
+</div ><br>
+<div class="totalresult">
+<label for="screen1" ><b>Result</b> </label>
+<input type="text" id="Result" name="Result" readonly>
+</div>
+<br>
+  <div class="getresultbutton">
+<button type="button" class="button button1"  onclick=" result()">Get Result</button>
+</div>
+<br>
+<div class="resett">
+<button  type="button" class="button button1"  onclick="reset()">Reset</button>
+</div>
+
+
+</form>
+
+<script type="text/javascript">
+
+var symbol = '';
+var number1 ;
+  var number2 ;
+
+ /* function values()
+  {
+  numberA = document.getElementById('Number1');
+   number1=numberA.value
+  numberB = document.getElementById('Number2');
+  number2=numberB.value
+  }*/
+  /*function errormessage()
+  {
+    result();
+    number1.setCustomValidity("please enter number");
+    number2.setCustomValidity("please enter number");
+  }*/
+
+function onlyNumberKey(evt) {
+          
+    // Only ASCII character in that range allowed
+
+    var ASCIICode = (evt.which) ? evt.which : evt.keyCode
+    
+    if (ASCIICode > 31 && (ASCIICode < 48 || ASCIICode > 57))
+    {
+      //alert('pleases enter number');
+      //result();
+      document.getElementById('Number1').style.borderColor= "red";
+      document.getElementById('Number2').style.borderColor= "red";
+      document.getElementById('Number1').innerHTML= "please enter number";
+      //document.getElementById('Number1').value.setCustomValidity("please enter number");
+      //document.getElementById('Number2').value.setCustomValidity("please enter number");
+       //////git 
+      return false;
+    }else
+        {
+          document.getElementById('Number1').style.borderColor= "white";
+      document.getElementById('Number2').style.borderColor= "white";
+        return true;
+        } 
+    
+}
+function validation()
+{
+  //values()
+  numberA = document.getElementById('Number1');
+   number1=numberA.value
+  numberB = document.getElementById('Number2');
+  number2=numberB.value
+  if(number1=='')
+  {
+ alert('please enter NUmber1')
+    //numberA.innerHTML='please enter number';
+   //numberA.setCustomValidity("please enter number");
+  }
+    else if(number2==''){
+      alert('please enter NUmber2')
+      //numberB.setCustomValidity("please enter number");
+      //numberA.innerHTML='please enter number';
+    }
+    
+
+  }
+
+
+
+  //number1 = document.getElementById('Number1').value;
+  //number2 = document.getElementById('Number2').value;
+  
+  //console.log(number1);
+  //console.log(number2);
+
+//var result1 =document.getElementById('Result').value;
+
+function addition()
+{
+//alert('+')
+//values();
+validation();
+console.log(number1);
+console.log(number2);
+
+  symbol =  parseInt(number1)+ parseInt(number2);
+console.log(symbol);
+
+}
+function subtraction()
+{
+//values();
+validation()
+symbol =parseInt(number1)- parseInt(number2);
+}
+
+function multiplication()
+{
+//values();
+validation()
+symbol = parseInt(number1)* parseInt(number2);
+}
+
+function division()
+{
+ // values();
+  validation()
+symbol = parseInt(number1)/ parseInt(number2);
+}
+
+function result()
+
+{
+//alert('resutlt')
+// alert(symbol)
+if(symbol==''){
+  alert('please select a operator for A')
+}else{
+ 
+  document.getElementById('Result').value = symbol;
+}
+
+}
+function reset()
+{
+document.getElementById('Number1').value='';
+document.getElementById('Number2').value='';
+document.getElementById('Result').value='';
+}
+
+</script>
+</body>
+</html>

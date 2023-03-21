@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!--<input type="object" onclick="sorting()" label="sort" size="20"></input>-->
+
+</head>
+<body>
+    <div style="text-align: center;">
+        <b><h2 style="color: green;">The element in th Array </h2></b>
+        <p style="color: rgba(255, 72, 0, 0.952);" id="demo"> </p> 
+        <b><h2 style="color: green;">The sorted array elements by name in ascending order</h2></b>
+        <p style="color: blue;" id="demo1"> </p> 
+        <b><h2 style="color: green;" >The sorted array elements by name in descending order</h2></b>
+        <p  style="color: rgb(234, 0, 255);" id="demo2"> </p>
+        <b><h2 style="color: green;" >The maximum id in the array element</h2></b>
+        <p  style="color: rgb(234, 0, 255);" id="demo3"> </p>
+        <b><h2 style="color: green;" >The minimum id in the array element</h2></b>
+        <p  style="color: rgb(234, 0, 255);" id="demo4"> </p>
+        <b><h2 style="color: green;" >The elements grater than the amount more 200</h2></b>
+        <p  style="color: rgb(234, 0, 255);" id="demo5"> </p>
+        <b><h2 style="color: green;" >The second largest amount</h2></b>
+        <p  style="color: rgb(234, 0, 255);" id="demo6"> </p>
+        <b><h2 style="color: green;" >Hard coded values::-Display output like this....'100','200','50','500','5000','50','5','50000'</h2></b>
+        <p  style="color: rgb(234, 0, 255);" id="demo7"> </p>
+        <b><h2 style="color: green;" >Hard coded values::-Display Output like this...........[1,2,2,3,4,4,5,6]</h2></b>
+        <p  style="color: rgb(234, 0, 255);" id="demo8"> </p>
+        
+        <b><h2 style="color: green;" >Display Output like this...........[1,2,2,3,4,4,5,6] with methods</h2></b>
+        <p  style="color: rgb(234, 0, 255);" id="demo9"> </p>
+        
+        <b><h2 style="color: green;" >Display Output like this...........[1,2,2,3,4,4,5,6] with methods</h2></b>
+        <p  style="color: rgb(234, 0, 255);" id="demo10"> </p>
+        </div>
+<script>
+const task = [
+                { name: "Steve", answer: "Yes",id: "1",amount: "100"},     
+
+                { name: "Jessica", answer: "Yes",id: "2",amount: "200"},
+                { name: "jessica", answer: "Yes",id: "2",amount: "50"},
+                { name: "INFOSIS", answer: "Yes",id: "3",amount: "500"},
+                { name: "Elaine", answer: "No",id: "4",amount: "5000"},
+                { name: "infosis", answer: "No",id: "4",amount: "50"},
+                { name: "TCS", answer: "No",id: "5",amount: "5"},
+                { name: "TATA", answer: "No",id: "6",amount: "50000"}
+                ];
+            // to display the elements in the array
+                let txt = "";
+                //define the function to diplay the elemernts
+                function myFunction(value, index, array) {
+
+                    txt += value.name+ "---" + value.answer + "-----"+ value.id+ "-----"+ value.amount+  "<br>"; 
+                    }
+                    //invoke the function
+                    task.forEach(myFunction);
+                
+                    //diplay the result in the html
+                    document.getElementById("demo").innerHTML = txt;
+//TASK- 5 and 6
+                    let displayoutput1 = "";
+                    let displayoutput2 = "";
+                //define the function to diplay the elemernts
+                function mydisplayFunction(value, index, array) {
+                    if(index==0)
+                    {
+                        displayoutput1 += "'" + value.amount + "',";
+                        displayoutput2 += "[" + value.id +","
+                    }
+                    else if(index > 0 && index < array.length-1)
+                    {
+                        displayoutput1 +="'" + value.amount +"'," ; 
+                        displayoutput2 += value.id +",";
+                    }
+                    else if(index==array.length-1)
+                    {
+                        displayoutput1 +="'"+  value.amount+ "'" ; 
+                    displayoutput2 += value.id + "]" ;
+
+                    }
+
+                    
+                    }
+                    //invoke the function
+                    task.forEach(mydisplayFunction);
+                
+                    //diplay the result in the html
+                    document.getElementById("demo7").innerHTML = displayoutput1;
+                    document.getElementById("demo8").innerHTML = displayoutput2;
+
+//TASk_1
+            //Sorting the  elements in asending order based on the name
+                            txt='';
+                task.sort(function(a, b) {
+                    const nameA = a.name.toUpperCase(); // To eliminate casesensitivity
+                    const nameB = b.name.toUpperCase(); // ignore upper and lowercase
+                    if (nameA < nameB) {
+                        return -1;
+                    }
+                    if (nameA > nameB) {
+                        return 1;
+                    }
+                    
+                    // names must be equal
+                    return 0;
+                    }
+                    );
+                
+                    task.forEach(myFunction);
+                    document.getElementById("demo1").innerHTML = txt;
+
+
+//Sorting the  elements dscending order based on the name
+                    txt='';
+                    task.sort(function(a, b) {
+                   const nameA = a.name.toUpperCase();  // To eliminate casesensitivity
+                    const nameB = b.name.toUpperCase();  // ignore upper and lowercase
+                    if (nameA > nameB) {
+                        return -1;
+                    }
+                    if (nameA < nameB) {
+                        return 1;
+                    }
+
+                    // names must be equal
+                    return 0;
+                    }
+                    );
+
+                    task.forEach(myFunction);
+
+                    document.getElementById("demo2").innerHTML = txt;
+ //TASK_2                   
+                    //Displaying the maximum id in the array
+                         let idmax ='';
+                         let idmin='';
+                         let secamt='';
+                         function maxidFunction1(array) {
+
+                            //txt += value.name+ "---" + value.answer + "-----"+ value.id+ "-----"+ value.amount+  "<br>"; 
+                            idmax += array[0].name + "---" + array[0].answer + "-----"+ array[0].id+ "-----"+ array[0].amount;
+                            idmin += array[array.length-1].name + "---" + array[array.length-1].answer + "-----"+ array[array.length-1].id+ "-----"+ array[array.length-1].amount;
+                            secamt = array[1].name + "---" + array[1].answer + "-----"+ array[1].id+ "-----"+ array[1].amount;
+
+                            }
+                    task.sort(function(a, b) {
+                    
+                         if (a.id > b.id) {
+                             return -1;
+                         }
+                         if (a.id < b.id) {
+                             return 1;
+                         }
+
+                         return 0;
+                         }
+                         );
+                    
+                         maxidFunction1(task);
+
+                         document.getElementById("demo3").innerHTML = idmax;
+                         console.log(idmax);
+                         document.getElementById("demo4").innerHTML = idmin;
+                         console.log(idmin);
+
+// TASK_3  amount more than 200 array 
+                                            const newarray=[];
+                        /*function  amountfunction(array,index)
+                        {
+                            for(index =0;index < task.lenght; index++)
+                                            
+                            {
+                                if(task[index].amount>200)
+                                {
+                                    this.newarray.push(task[index]);
+                                    
+                                }
+                            }
+                            console.log(newarray);
+
+                        }
+                                        amountfunction(task);*/
+
+                        function myamountFunction(value, index, array) {
+                        if(value.amount>200)
+                        {
+                            newarray.push(array[index]);
+                        } 
+                        }
+                        //pushing the 200>amount elements in to a different array
+                        task.forEach(myamountFunction);
+
+                        //display the thearry in the html
+                        txt='';
+                        newarray.forEach(myFunction);
+                        document.getElementById("demo5").innerHTML = txt;
+                        console.log(newarray);
+
+//TASK_4
+
+                        //display the secod largest amount in the array
+                        task.sort(function(a, b) {
+                            
+                                            
+                            if (a.amount > b.amount) {
+                                return -1;
+                            }
+                            if (a.amount < b.amount) {
+                                return 1;
+                            }
+
+                            return 0;
+                            }
+                            );
+
+                            /*let secondarray = [] ;
+                            secondarray.push(task[1]);*/
+                            maxidFunction1(task);
+                            document.getElementById("demo6").innerHTML = secamt;
+
+                        console.log("The second larger amount :--" + '<b>' + task[1].name +"-----"+task[1].amount+"-----"+ task[1].id+"---"+task[1].answer + '<b>' );
+
+                            
+//TASK:-5
+const task123 = [
+                { name: "Steve", answer: "Yes",id: "1",amount: "100"},     
+
+                { name: "Jessica", answer: "Yes",id: "2",amount: "200"},
+                { name: "jessica", answer: "Yes",id: "2",amount: "50"},
+                { name: "INFOSIS", answer: "Yes",id: "3",amount: "500"},
+                { name: "Elaine", answer: "No",id: "4",amount: "5000"},
+                { name: "infosis", answer: "No",id: "4",amount: "50"},
+                { name: "TCS", answer: "No",id: "5",amount: "5"},
+                { name: "TATA", answer: "No",id: "6",amount: "50000"}
+                ];
+
+                            function displayarray(value, index, array)
+                            {
+                                return value.amount;
+                            }
+                            /*function parseArray(arr) {
+                                const str = arr.toString();
+                                const backToArr = str.split(',');
+                                return backToArr;
+                            }*/
+                            
+                            const task5 = task123.map(displayarray);
+                            console.log("TAsk-5" + task5)
+                            const task5_1 = task5.toString();
+                            //console.log(task5);
+                            //console.log(task5_1);
+                            const space1="'";
+
+                            const task5_2 = task5_1.replaceAll(/,/g,"','");
+                            //console.log(task5_2);
+                            const task5_3=space1.concat(task5_2);
+                            const task5_4=task5_3.concat(space1);
+                            console.log(task5_4);
+                            document.getElementById("demo9").innerHTML = task5_4;
+
+                            //displayarray(task);
+                            //const task5_1 =task5.toString();
+                            //const task5_2 =task5_1.split();
+                            //const task5_1 = parseArray(task5);
+                            //console.log(task5_1);
+                            //console.log(task5_2);
+
+  //TASK:_6
+                        function displayarrayid(value, index, array)
+                        {
+                            return value.id;
+
+                        }
+                        const task6 = task123.map(displayarrayid);
+                        console.log("array ::" + task6)
+                        console.log(task6)
+                        const task6_1 = "[" +task6.toString()+"]";
+                            console.log(task6_1);
+                            document.getElementById("demo10").innerHTML = task6_1;
+                        //task.forEach(displayarrayid)
+                        
+//TASK:_7
+/*// Create an array of string
+var stringArray = ["1", "2", "3", "4", "5"];
+  
+// Create an empty array of number
+var numberArray = [];
+  
+// Store length of array of string
+// in variable length
+length = stringArray.length;
+  
+// Iterate through array of string using
+// for loop
+// push all elements of array of string
+// in array of numbers by typecasting
+// them to integers using parseInt function
+for (var i = 0; i < length; i++)
+  
+    // Instead of parseInt(), Number()
+    // can also be used
+    numberArray.push(parseInt(stringArray[i]));
+  
+// Print the array of numbers
+console.log(numberArray)*/
+
+  
+                        const task7 = [
+                                        { name: "Steve", answer: "Yes",id: "1",amount: "100"},     
+
+                                        { name: "Jessica", answer: "Yes",id: "2",amount: "200"},
+                                        { name: "jessica", answer: "Yes",id: "2",amount: "50"},
+                                        { name: "INFOSIS", answer: "Yes",id: "3",amount: "500"},
+                                        { name: "Elaine", answer: "No",id: "4",amount: "5000"},
+                                        { name: "infosis", answer: "No",id: "4",amount: "50"},
+                                        { name: "TCS", answer: "No",id: "5",amount: "5"},
+                                        { name: "TATA", answer: "No",id: "6",amount: "50000"}
+                                        ];
+
+                                        
+                               const  task7_1 = task7.map(function amountarray (value)             
+                               {
+                                   return value.amount;
+                               })
+
+                               console.log("task7_1::"+ task7_1 )
+
+                               let numtask7_1 =[];
+                               for(i=0; i< task7_1.length;i++)
+                               {
+                                numtask7_1.push(parseInt(task7_1[i]));
+                               }
+                               console.log("numtask7_1::"+ numtask7_1 )
+
+                                        /*function doamount(total,value)
+                                        {
+                                            //console.log("total"+ total)
+                                            //console.log("value"+ value.amount)
+                                            return parseInt(total)  +  parseInt(value);
+                                           
+                                        }*/
+                                        function doamount(total, value, index, array) {
+                                            return total + value;
+                                          }
+
+                                  
+                                        const totalamount = numtask7_1.reduce(doamount);
+                                        console.log("The total amount  :: " + totalamount );
+                                    
+//TASK:-8
+
+//get the array havinf id in the array task6
+
+function myidFunction(value, index, array) {
+    let value1=array[0];
+    console.log(" default value: :"+ value1)
+    return value ==value1;
+  }
+
+ let allissame= task6.every(myidFunction);
+ console.log("All ids are same are not::"+ allissame)
+
+
+
+
+
+ //TASK:-9
+//get converted number array numtask7_1
+function myamountFunction(value, index, array) {
+    return value > 5;
+  }
+  let amountover5 = numtask7_1.some(myamountFunction);
+
+  console.log("GIven array has amount more than 5 ::" + amountover5)
+
+</script>
+</body>
+</html>
+

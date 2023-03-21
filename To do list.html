@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head >
+<style>
+    h1,#namestai {
+        border: 1px solid black;
+        background-color: greenyellow;
+        padding-top: 50px;
+        padding-right: 50px;
+        padding-bottom: 50px;
+        padding-left: 50px;
+        text-align: center;
+        height: 50px; 
+        width: 100%;
+        }
+        
+        
+</style>
+<div >
+<h1>ToDo List</h1></div>
+
+</head>
+<body>
+<div style="text-align: center;"id="namestai"  >
+<h2>Add Items</h2>  
+<input type="text" id="fname" name="fname" >
+<button type="button" id="text1" onclick="return onsubmit123()" >submit</button>
+<button type="button" id="text2" onclick="edited()" >edited</button>
+<div style="text-align: center;" id="namestai2">
+<h3><strong> TASKS</strong></h3>
+<strong><p id="output"></p></strong>
+</div>
+
+</div>
+
+
+<script>
+    var items=[];
+    var valueall=document.getElementById('fname')
+    let indexno;
+    //document.getElementById('text1').style.display = "block";
+    //document.getElementById('text2').style.display = "none";
+    function onsubmit123()
+    {
+        //console.log('text is valid')
+        //document.getElementById('nameer').value += document.getElementById('fname').value;"<br>"
+    //console.log('text ' +value)
+   
+    var value1=document.getElementById('fname').value;
+    //console.log(value1)
+    
+if(value1=='')
+{
+    alert('input is empty')
+} else{
+    this.items.push(value1);
+    //display the output
+    diplayart()
+    
+    }
+
+/*function myFunction(value, index, array) {
+   
+txt += value    +'<button type="button"  onclick='returnedit(${ind})'>edit</button> 
+               <button type="button" onclick="return onsubmit123()" >Delete</button>'+ "<br>"; 
+}
+   
+}*/
+
+        
+    }
+
+    function edit(index) {
+         //saveInd.value = ind;
+         //let todo = localStorage.getItem("todo");
+         //todoArray = JSON.parse(todo);
+        this.indexno=index;
+        this.valueall.value= this.items[index];
+        //text1.style.display = "none";
+        //text2.style.display = "block";
+        //this.items[index]= this.valueall.value
+
+       /* var txt = "";
+        this.items.forEach((value, index) => {
+            txt += `<div class='flex mb-4 items-center' style="text-align: center;">
+            <p class='w-full text-grey-darkest'>${value}</p>
+        <button onclick='edit(${index})' class='flex-no-shrink p-2 ml-4 mr-2 border-2 rounded text-white text-grey bg-green-600'>Edit</button>
+            <button onclick='deleteTodo(${index})' class='flex-no-shrink p-2 ml-2 border-2 rounded text-white bg-red-500'>Delete</button>
+            </div>`;
+        });*/
+
+        // addTaskButton.style.display = "none";
+         //saveTaskButton.style.display = "block";
+        }
+        function diplayart()
+        {
+            var txt = "";
+            this.items.forEach((value, index) => {
+                txt += `<div class='flex mb-4 items-center' style="text-align: center;">
+                <p class='w-full text-grey-darkest'>${value}</p>
+            <button onclick='edit(${index})' class='flex-no-shrink p-2 ml-4 mr-2 border-2 rounded text-white text-grey bg-green-600'>Edit</button>
+                <button onclick='deleteitem(${index})' class='flex-no-shrink p-2 ml-2 border-2 rounded text-white bg-red-500'>Delete</button>
+                </div>`;
+            });
+            document.getElementById("output").innerHTML = txt;
+            document.getElementById('fname').value='';
+        }
+        function edited()
+        {
+          
+            //this.items[indexno]= valueall.value;
+            console.log(valueall.value)
+            console.log(this.indexno)
+            this.items.splice(this.indexno, 1,valueall.value );
+            console.log(this.items)
+            diplayart()
+        }
+        function deleteitem(index)
+        {
+           
+            this.items.splice(index, 1);
+            console.log(this.items)
+            diplayart()
+        }
+
+</script>
+</body>
+</html>

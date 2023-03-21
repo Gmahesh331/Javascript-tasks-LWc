@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+#error1{
+ display: none;
+ color: red;
+}
+#error2{
+    display: none;
+    color: red;
+   }
+
+</style>
+</head>
+<body>
+    <form>
+    <div style="text-align: center;">
+    <h1><b>Log in form</b></h1>
+    <div>
+    <label for="name">Name</label>
+    <input type="text" class="form-control" type="text" id="fullname" name="fname"   onkeyup="namevalidation()" required ><br><div id="error1"></div><br>
+    <div ></div>
+    <label for="email">Email</label>
+    <input type="email" id="emailaddress" name="email" onkeyup="emailvalidation()"  required><br><div id="error2"></div><br>
+    <div ></div>
+    <!--<label for="passsword">Password</label>dgsdgsgdsgit add .
+    <input type="password" id="passsword123" name="passsword" required ><br><br>-->
+    <label for="pass-field">password</label>
+    <input id="pass-field" type="password">
+    <a onmousedown="showPassword()" onmouseup="hidePassword()" id="eye-btn" href="#">EYE</a>
+    
+</div>
+
+<div style="text-align: center;">
+    <button type="button" class="button button1"  onclick="nullvalidation()()">NUllvalidation</button>
+   
+</div>
+</form>
+    <script>
+     /*#txtChar:required:valid {
+            border: 1px solid green;
+        }
+        
+        #txtChar:required:invalid {
+            border: 1px solid red;
+        }*/
+    
+        var nameref=document.getElementById("fullname");
+        var emailref=document.getElementById("emailaddress");
+        var passswordref=document.getElementById("passsword123");
+        let letters =/^[a-zA-Z] *$/;
+        let emailcheck=/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+        //var name1=nameref.value;
+        //var email1=emailref.value;
+        //var password1 =passswordref.value; 
+        var errors1=document.getElementById("error1");
+
+
+        /*nameref.addEventListener("onkeyup", function (event) 
+        {
+            console.log(nameref.value)
+            if (nameref.value == "") {
+              // nameref.innerText("please enter letters , darling!");
+              alert("please enter a character")
+            }else  if (!/^[a-zA-Z]*$/g.test(name1)) {
+
+                //nameref.setCustomValidity("please enter letters , darling!");
+                alert("please enter a number")
+            }
+            });
+
+            emailref.addEventListener("onkeyup", function (event) {
+                if (emailref.value == "") 
+                {
+                    //emailref.setCustomValidity("please enter letters , darling!");
+                    alert("please enter the email")
+                }
+                else if (emailref.validity.typeMismatch) {
+                   // emailref.setCustomValidity("I expect an e-mail, darling!");
+                   alert("I expect an e-mail, darling!")
+                } else {
+                    emailref.setCustomValidity("");
+                }
+              });
+    
+    
+              function lettersOnly(evt) {
+                evt = (evt) ? evt : event;
+                var charCode = (evt.charCode) ? evt.charCode : ((evt.keyCode) ? evt.keyCode :
+                   ((evt.which) ? evt.which : 0));
+                if (charCode > 31 && (charCode < 65 || charCode > 90) &&
+                   (charCode < 97 || charCode > 122)) {
+                     alert("Enter letters only.");
+                   return false;
+                }
+                return true;
+              }
+              function lettersOnly(){
+
+              var alphaExp = /^[a-zA-Z]+$/;
+            if(name1.match(alphaExp))
+            {
+                //Your logice will be here.
+            }
+            else{
+                alert("Please enter only alphabets");
+            }
+        }*/
+    
+function  namevalidation()
+{
+    if(!nameref.value.match(letters))
+    {
+        error1.innerHTML="Name only have letters";
+        error1.style.display="block";
+        return false;
+    }
+    /*else if(nameref.value.length>20||nameref.value.length<3)
+    {
+        error1.innerHTML="Name Max have 20 letters and min 3 letter";
+        error1.style.display="block";
+        return false;
+    }*/
+    else if(nameref.value.length >20 || nameref.value.length<3)
+    {
+        console.log("length validation")
+        error1.innerHTML="Name Max have 20 letters and min 3 letter ";
+        error1.style.display="block";
+        
+        return false;
+    }  else 
+    {
+        error1.innerHTML="";
+        return false;
+    }
+}
+    
+    function emailvalidation()
+    {
+        if(!emailref.value.match(emailcheck))
+    {
+        error2.innerHTML="please enter valid email adress ";
+        error2.style.display="block";
+        return false;
+    }else 
+    {
+        error2.innerHTML="";
+        return false;
+    }
+
+    }
+
+    function showPassword() {
+        document.getElementById('pass-field').type = 'text';
+      }
+      
+      function hidePassword() {
+        document.getElementById('pass-field').type = 'password';
+      }
+function nullvalidation()
+{
+    if(nameref.value=='')
+    {
+        error1.innerHTML="Name Must be Filled... !!!";
+        error1.style.display="block";
+        return false;
+
+    }
+    if(emailref.value=='')
+    {
+        error2.innerHTML="email Must be Filled... !!!";
+        error2.style.display="block";
+        return false;
+
+    }
+}
+    
+
+
+
+
+
+
+
+
+
+    </script>
+
+
+
+    
+
+
+</html>

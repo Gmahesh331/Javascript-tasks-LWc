@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+</head>
+<body>
+    <div style="color:blue;text-align:center; padding: 16px 32px;">
+        <p id="rNumber">Random Number : {randomNumber}</p>
+    </div>
+    <div style="color:rgb(255, 102, 0);text-align:center; padding: 16px 32px;">
+        <button style="background-color :aquamarine"  label="Random NUmber" type="button"  onclick="buttonclick()"> RNumber</button>
+    </div>
+    <div style="color:rgb(0, 255, 98);text-align:center;">
+        <img src="images/spacer.gif" width="305" height="312" id="myPicture" alt="Image Displayer">
+    </div>
+
+    <script>
+        function buttonclick(){
+        let randomNumber=Math.floor((Math.random() * 6) + 1)
+        console.log('RandmNumber::' + randomNumber)
+        document.getElementById('rNumber').value=randomNumber;
+
+        var myPix =  new Array(
+        "https://webstockreview.net/images/dice-clipart-double-4.png",
+        "https://th.bing.com/th/id/R.5e935cd9075e8b4ad1e484c0dd1d063c?rik=E6SlgH5JGW6W%2bQ&riu=http%3a%2f%2fclipartmag.com%2fimages%2fdice-1-clipart-30.png&ehk=O7oHp3iD9KCCBVuvudvQ55V1cAvmIVVu9x7Mi6608zc%3d&risl=&pid=ImgRaw&r=0",
+        "https://clipground.com/images/number-3-dice-clipart-black-and-white-1.png",
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Dice-4-b.svg/1024px-Dice-4-b.svg.png",
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Dice-5-b.svg/1024px-Dice-5-b.svg.png",
+        "https://www.tynker.com/projects/images/5a6397185ae02937258b47ac/dice-6---dice-6.png"
+        );
+        document.getElementById("myPicture").src = myPix[randomNumber-1];
+        }
+    </script>
+</body>
+</html>
